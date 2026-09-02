@@ -1,14 +1,175 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0a0a0f" />
-  <title>EYD Academy — Preview</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f7fb">
+<title>EYD Academy — Community Learning</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="app" class="app"></div>
-<script src="app.js"></script>
+
+<section id="landing" class="route active">
+  <header class="landingTop">
+    <div class="inner">
+      <a class="brand" href="#landing">
+        <img src="assets/eyd-logo.png" alt="EYD logo">
+        <span>EYD ACADEMY<small>LEARN · PRACTICE · GROW TOGETHER</small></span>
+      </a>
+      <nav class="landingNav">
+        <a href="#landing">Academy</a>
+        <a href="#landing">Programs</a>
+        <a href="#auth">How it works</a>
+        <a class="btn ghost keep" href="#auth">Log in</a>
+        <a class="btn primary keep" href="#dashboard">Explore demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="landingHero">
+      <div>
+        <div class="kicker">Your EYD learning space</div>
+        <h1>You joined the program. <span>Keep growing with it.</span></h1>
+        <p>EYD Academy should feel like an extension of the programs you take with us: friendly, clear and motivating. Your lessons, practice, notes and progress stay together in one place.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" href="#dashboard">Explore student portal →</a>
+          <a class="btn ghost" href="#mentoring">Open Mentoring course</a>
+        </div>
+        <div style="display:flex;gap:22px;margin-top:28px;flex-wrap:wrap;color:#626572;font-size:12px">
+          <span>✓ Continue exactly where you stopped</span>
+          <span>✓ Save private notes</span>
+          <span>✓ Track real progress</span>
+        </div>
+      </div>
+      <div class="heroShot">
+        <img src="assets/couple.jpg" alt="Dance learning">
+        <div class="heroFloat one">
+          <span>Current course</span>
+          <strong>68% complete</strong>
+          <div class="progress" style="margin-top:8px"><i style="width:68%"></i></div>
+        </div>
+        <div class="heroFloat two">
+          <span>This week</span>
+          <strong>3 lessons ✓</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="landingFeatures">
+      <div class="featureStrip">
+        <div class="featureMini"><div class="fi">1</div><b>Know what comes next</b><p>Every page tells you where you are and what action to take next.</p></div>
+        <div class="featureMini"><div class="fi">2</div><b>Feel part of the program</b><p>Your EYD courses live together in one learning space instead of separate folders and links.</p></div>
+        <div class="featureMini"><div class="fi">3</div><b>Understand your progress</b><p>Percentages explain exactly what has been completed and what remains.</p></div>
+        <div class="featureMini"><div class="fi">4</div><b>Return and keep growing</b><p>Future courses, purchases and resources can be added to the same account.</p></div>
+      </div>
+    </section>
+  </main>
+</section>
+
+<section id="auth" class="route">
+  <div class="authPage">
+    <div class="authVisual">
+      <a class="brand" href="#landing"><img src="assets/eyd-logo.png"><span>EYD ACADEMY<small>LEARN · PRACTICE · GROW TOGETHER</small></span></a>
+      <div>
+        <div class="kicker">Your learning stays with you</div>
+        <h1>One account for every EYD course you join.</h1>
+        <p>Your progress, notes, achievements and course access stay connected to your account—even when new programs are added later.</p>
+      </div>
+      <span class="small muted">Secure authentication will replace this prototype login in production.</span>
+    </div>
+    <div class="authFormWrap">
+      <div class="authBox" id="loginBox">
+        <div class="kicker">Welcome back</div>
+        <h2>Log in to EYD Academy</h2>
+        <p>Continue your courses and pick up from your last lesson.</p>
+        <div class="field"><label>Email</label><input value="student@eyd-preview.local"></div>
+        <div class="field"><label>Password</label><input type="password" value="PreviewStudent26!"></div>
+        <div style="display:flex;justify-content:flex-end"><button class="textLink" onclick="showForgot()">Forgot password?</button></div>
+        <button class="btn primary" onclick="location.hash='#dashboard'">Log in</button>
+        <button class="btn ghost" onclick="location.hash='#admin'">Open admin demo</button>
+        <p class="small" style="text-align:center;margin-top:18px">New student? <button class="textLink" onclick="showRegister()">Create an account</button></p>
+      </div>
+      <div class="authBox hidden" id="forgotBox">
+        <div class="kicker">Password reset</div>
+        <h2>Reset your password</h2>
+        <p>Enter your email and we’ll send a secure, expiring reset link. The old password is never shown or recoverable.</p>
+        <div class="field"><label>Email</label><input value="student@eyd-preview.local"></div>
+        <button class="btn primary" onclick="showResetSent()">Send reset link</button>
+        <button class="textLink" style="margin-top:16px" onclick="showLogin()">← Back to login</button>
+      </div>
+      <div class="authBox hidden" id="resetSentBox">
+        <div class="pill green">Email sent</div>
+        <h2>Check your inbox</h2>
+        <p>A secure password reset link was sent to <b>student@eyd-preview.local</b>.</p>
+        <button class="btn soft" onclick="showNewPassword()">Preview reset link</button>
+        <button class="textLink" style="margin-top:16px" onclick="showLogin()">Back to login</button>
+      </div>
+      <div class="authBox hidden" id="newPasswordBox">
+        <div class="kicker">Choose a new password</div>
+        <h2>Create a new password</h2>
+        <div class="field"><label>New password</label><input type="password" value="NewSecurePassword!"></div>
+        <div class="field"><label>Confirm password</label><input type="password" value="NewSecurePassword!"></div>
+        <button class="btn primary" onclick="showLogin();toast('Password changed in preview')">Update password</button>
+      </div>
+      <div class="authBox hidden" id="registerBox">
+        <div class="kicker">Create your account</div>
+        <h2>Join EYD Academy</h2>
+        <p>Your purchases can then be attached to this account automatically or by the school.</p>
+        <div class="field"><label>Full name</label><input value="Alex Morgan"></div>
+        <div class="field"><label>Email</label><input value="alex@example.com"></div>
+        <div class="field"><label>Password</label><input type="password" value="SecurePassword!"></div>
+        <button class="btn primary" onclick="location.hash='#dashboard'">Create account</button>
+        <button class="textLink" style="margin-top:16px" onclick="showLogin()">Already have an account?</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="app" class="route">
+  <div class="appShell">
+    <aside class="sidebar">
+      <a class="sideBrand" href="#dashboard"><img src="assets/eyd-logo.png"><span>EYD ACADEMY<small>STUDENT PORTAL</small></span></a>
+      <div class="sideGroupLabel">My learning</div>
+      <nav class="sideNav">
+        <a href="#dashboard" data-side="dashboard">⌂ <span>Home</span></a>
+        <a href="#courses" data-side="courses">▤ <span>My programs</span><span class="badgeCount">3</span></a>
+        <a href="#journey" data-side="journey">↗ <span>My journey</span></a>
+        <a href="#mentoring" data-side="mentoring">▶ <span>Recommended next</span></a>
+      </nav>
+      <div class="sideGroupLabel">My space</div>
+      <nav class="sideNav">
+        <a href="#saved" data-side="saved">☆ <span>Saved lessons</span></a>
+        <a href="#account" data-side="account">⚙ <span>Account & security</span></a>
+      </nav>
+      <div class="sideBottom">
+        <div class="userMini">
+          <div class="avatar">AM</div>
+          <div><b>Alex Morgan</b><small>Level 6 learner</small></div>
+        </div>
+      </div>
+    </aside>
+    <main class="appMain">
+      <header class="topbar">
+        <button class="iconBtn mobileMenu" onclick="location.hash='#dashboard'">☰</button>
+        <div class="search"><span>⌕</span><input placeholder="Search lessons, courses, topics..."></div>
+        <div class="topActions">
+          <span class="pill violet">740 XP</span>
+          <button class="iconBtn" title="Notifications">◌</button>
+          <a class="iconBtn" href="#account" title="Account">AM</a>
+        </div>
+      </header>
+      <div id="appRoute"></div>
+    </main>
+  </div>
+</div>
+
+<div id="toast" style="position:fixed;right:20px;bottom:20px;background:#171824;color:#fff;padding:12px 15px;border-radius:12px;font-size:12px;opacity:0;pointer-events:none;transition:.2s;z-index:100"></div>
+
+<script src="js/01.js"></script>
+<script src="js/02.js"></script>
+<script src="js/03.js"></script>
+<script src="js/04.js"></script>
+<script src="js/05.js"></script>
 </body>
 </html>
