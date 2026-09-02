@@ -24,10 +24,10 @@ Recommended setup:
 - Git repository: `dennis19doa/eyd-academy`
 - Production branch: `main`
 - Framework preset: None / Static HTML
-- Build command: `exit 0`
-- Build output directory: `.`
+- Build command: `bash build.sh`
+- Build output directory: `dist`
 
-The repository includes `_headers` and `_redirects` files for Cloudflare Pages.
+The build script copies the deployable site into `dist/`. The repository also includes `_headers` and `_redirects` files for Cloudflare Pages.
 
 After the first deployment, Cloudflare will provide a temporary `*.pages.dev` URL. Test that URL before connecting `eyd-bachata.com`.
 
