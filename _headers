@@ -4,5 +4,14 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   X-Frame-Options: SAMEORIGIN
 
+# EYD currently uses stable filenames for CSS/JS, so keep browser caching short enough
+# that design/content changes become visible quickly after a deploy.
+/styles.css
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Images benefit from caching but may be replaced without a filename change.
 /assets/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=604800, must-revalidate
